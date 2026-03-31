@@ -1,0 +1,90 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "layer-shell": true,
+  "cssPriority": "application",
+  "control-center-margin-top": 8,
+  "control-center-margin-bottom": 8,
+  "control-center-margin-right": 8,
+  "control-center-margin-left": 0,
+  "notification-2fa-action": true,
+  "notification-inline-replies": false,
+  "fit-to-screen": false,
+  "control-center-width": 380,
+  "control-center-height": 600,
+  "notification-window-width": 360,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 150,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "script-fail-notify": false,
+  "ignore-gtk-theme": true,
+
+  "widgets": [
+    "title",
+    "dnd",
+    "mpris",
+    "buttons-grid",
+    "notifications"
+  ],
+
+  "widget-config": {
+    "title": {
+      "text": "[ NERV CONTROL CENTER ]",
+      "clear-all-button": true,
+      "button-text": "PURGE ALL"
+    },
+
+    "dnd": {
+      "text": "// DO NOT DISTURB //"
+    },
+
+    "mpris": {
+      "image-size": 56,
+      "image-radius": 0
+    },
+
+    "buttons-grid": {
+      "actions": [
+            {
+                  "label": "󰐥",
+                  "command": "bash -c $HOME/.config/hypr/scripts/Wlogout.sh"
+              },
+              {
+                  "label": "󰌾",
+                  "command": "bash -c $HOME/.config/hypr/scripts/hyprlock.sh"
+              },
+              {
+                  "label": "󰍃",
+                  "command": "hyprctl dispatch exit"
+              },
+        {
+          "label": "󰂯 BT",
+          "command": "rfkill toggle bluetooth"
+        },
+        {
+          "label": "󰤨 WIFI",
+          "type": "toggle",
+          "active": true,
+          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
+          "update-command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
+        },
+        {
+          "label": "󰕾 MUTE",
+          "type": "toggle",
+          "active": false,
+          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && pamixer -m || pamixer -u'",
+          "update-command": "sh -c 'pamixer --get-mute'"
+        },
+        {
+          "label": "󰌾 LOCK",
+          "command": "hyprlock"
+        }
+      ]
+    }
+  }
+}

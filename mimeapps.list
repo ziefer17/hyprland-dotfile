@@ -1,0 +1,58 @@
+[Default Applications]
+# Browser
+text/html=zen.desktop
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
+x-scheme-handler/chrome=zen.desktop
+application/x-extension-htm=zen.desktop
+application/x-extension-html=zen.desktop
+application/x-extension-shtml=zen.desktop
+application/x-extension-xht=zen.desktop
+application/x-extension-xhtml=zen.desktop
+application/xhtml+xml=zen.desktop
+
+# Text / Code
+text/plain=kate.desktop
+application/json=kate.desktop
+application/schema+json=kate.desktop
+application/x-shellscript=kate.desktop
+application/x-desktop=kate.desktop
+
+# Images
+image/png=qimgv.desktop
+image/jpeg=qimgv.desktop
+image/jpg=qimgv.desktop
+image/webp=qimgv.desktop
+image/gif=qimgv.desktop
+image/bmp=qimgv.desktop
+image/tiff=qimgv.desktop
+image/svg+xml=qimgv.desktop
+
+# Video
+video/mp4=mpv.desktop
+video/x-matroska=mpv.desktop
+video/webm=mpv.desktop
+video/avi=mpv.desktop
+video/quicktime=mpv.desktop
+video/x-flv=mpv.desktop
+video/mpeg=mpv.desktop
+
+# Audio
+audio/mpeg=mpv.desktop
+audio/flac=mpv.desktop
+audio/x-wav=mpv.desktop
+audio/ogg=mpv.desktop
+audio/x-m4a=mpv.desktop
+audio/aac=mpv.desktop
+
+# PDF
+application/pdf=org.kde.okular.desktop
+
+[Added Associations]
+text/html=zen.desktop
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
+image/png=qimgv.desktop
+image/jpeg=qimgv.desktop
+application/pdf=org.kde.okular.desktop
+text/plain=kate.desktop

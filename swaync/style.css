@@ -1,0 +1,369 @@
+/* ============================================================
+ *  SWAYNC — NEON EVANGELION THEME
+ *  Colors inspired by NGE UI:
+ *    Black    #0a0a0a   Deep void
+ *    DarkGray #111111   Panel bg
+ *    MidGray  #1a1a1a   Surface
+ *    Orange   #ff6600   NERV primary (Eva-01 orange)
+ *    Green    #00ff41   Terminal green / active
+ *    Red      #ff0033   Alert / critical (Lance of Longinus)
+ *    White    #e8e8e8   Text
+ *    Dim      #555555   Subtext
+ *  ============================================================ */
+
+* {
+    all: unset;
+    font-family: "JetBrains Mono", "Hack", monospace;
+    font-size: 13px;
+    transition: 120ms ease;
+}
+
+/* ── Control Center window ────────────────────────────────── */
+.control-center {
+    background: #0a0a0a;
+    border: 1px solid #ff6600;
+    border-radius: 0;
+    box-shadow: 0 0 24px rgba(255, 102, 0, 0.25),
+    inset 0 0 60px rgba(0, 0, 0, 0.8);
+    padding: 0;
+}
+
+/* ── Scrollable list ──────────────────────────────────────── */
+.control-center-list {
+    background: transparent;
+    padding: 6px;
+}
+
+.control-center-list-placeholder {
+    color: #333333;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* ── Title widget ─────────────────────────────────────────── */
+.widget-title {
+    background: #111111;
+    border-bottom: 1px solid #ff6600;
+    padding: 10px 14px;
+    margin: 0;
+}
+
+.widget-title > label {
+    color: #ff6600;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.widget-title > button {
+    background: transparent;
+    border: 1px solid #333333;
+    color: #555555;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 0;
+}
+
+.widget-title > button:hover {
+    background: #ff0033;
+    border-color: #ff0033;
+    color: #e8e8e8;
+    box-shadow: 0 0 8px rgba(255, 0, 51, 0.5);
+}
+
+/* ── DND widget ───────────────────────────────────────────── */
+.widget-dnd {
+    background: #111111;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 8px 14px;
+    margin: 0;
+}
+
+.widget-dnd > label {
+    color: #555555;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.widget-dnd > switch {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0;
+    min-width: 40px;
+    min-height: 18px;
+}
+
+.widget-dnd > switch:checked {
+    background: #ff0033;
+    border-color: #ff0033;
+    box-shadow: 0 0 6px rgba(255, 0, 51, 0.6);
+}
+
+.widget-dnd > switch slider {
+    background: #555555;
+    border-radius: 0;
+    min-width: 16px;
+    min-height: 14px;
+    margin: 1px;
+}
+
+.widget-dnd > switch:checked slider {
+    background: #e8e8e8;
+}
+
+/* ── Buttons grid ─────────────────────────────────────────── */
+.widget-buttons-grid {
+    background: #111111;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 8px;
+    margin: 0;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 0;
+    color: #555555;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    margin: 3px;
+    min-width: 70px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+    background: #1a1a1a;
+    border-color: #ff6600;
+    color: #ff6600;
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.active {
+    background: #0d1a0d;
+    border-color: #00ff41;
+    color: #00ff41;
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+/* ── MPRIS widget ─────────────────────────────────────────── */
+.widget-mpris {
+    background: #111111;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 10px;
+    margin: 0;
+}
+
+.widget-mpris-player {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 0;
+    padding: 8px;
+    margin: 2px 0;
+}
+
+.widget-mpris-player:hover {
+    border-color: #ff6600;
+}
+
+.widget-mpris-title {
+    color: #e8e8e8;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.widget-mpris-subtitle {
+    color: #555555;
+    font-size: 11px;
+}
+
+.widget-mpris > box > button {
+    background: transparent;
+    border: none;
+    color: #ff6600;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.widget-mpris > box > button:hover {
+    color: #e8e8e8;
+    background: #ff6600;
+}
+
+/* ── Notification base ────────────────────────────────────── */
+.notification-row {
+    background: transparent;
+    margin: 3px 0;
+    padding: 0;
+}
+
+.notification-row:hover {
+    background: transparent;
+}
+
+.notification {
+    background: #111111;
+    border: 1px solid #2a2a2a;
+    border-radius: 0;
+    border-left: 3px solid #ff6600;
+    padding: 10px 12px;
+    margin: 0;
+}
+
+.notification:hover {
+    border-color: #ff6600;
+    border-left-color: #ff6600;
+    box-shadow: 0 0 12px rgba(255, 102, 0, 0.2);
+}
+
+/* urgency levels */
+.notification.low {
+    border-left-color: #333333;
+}
+
+.notification.normal {
+    border-left-color: #ff6600;
+}
+
+.notification.critical {
+    border-left-color: #ff0033;
+    background: #150000;
+    box-shadow: 0 0 16px rgba(255, 0, 51, 0.3);
+    animation: critical-pulse 1.5s ease infinite;
+}
+
+@keyframes critical-pulse {
+    0%   { box-shadow: 0 0 8px rgba(255, 0, 51, 0.2); }
+    50%  { box-shadow: 0 0 20px rgba(255, 0, 51, 0.5); }
+    100% { box-shadow: 0 0 8px rgba(255, 0, 51, 0.2); }
+}
+
+/* ── Notification content ─────────────────────────────────── */
+.notification-content {
+    padding: 0;
+}
+
+.notification-default-action {
+    background: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.notification-default-action:hover {
+    background: transparent;
+}
+
+.app-name {
+    color: #ff6600;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.summary {
+    color: #e8e8e8;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.time {
+    color: #333333;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.body {
+    color: #888888;
+    font-size: 11px;
+}
+
+/* ── Notification image ───────────────────────────────────── */
+.notification-image {
+    border-radius: 0;
+    border: 1px solid #2a2a2a;
+    margin-right: 8px;
+}
+
+/* ── Action buttons ───────────────────────────────────────── */
+.notification-action {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 0;
+    color: #555555;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    margin: 4px 2px 0 0;
+}
+
+.notification-action:hover {
+    background: #ff6600;
+    border-color: #ff6600;
+    color: #0a0a0a;
+}
+
+.notification-action:last-child {
+    margin-right: 0;
+}
+
+/* ── Close button ─────────────────────────────────────────── */
+.close-button {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    color: #333333;
+    font-size: 12px;
+    padding: 0 4px;
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.close-button:hover {
+    color: #ff0033;
+    background: transparent;
+}
+
+/* ── Notification popup (floating toast) ─────────────────── */
+.notification-popup-area {
+    padding: 6px;
+}
+
+.floating-notifications {
+    background: transparent;
+}
+
+.floating-notifications .notification {
+    background: #0d0d0d;
+    border: 1px solid #ff6600;
+    border-left: 3px solid #ff6600;
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.8);
+    margin-bottom: 6px;
+}
+
+.floating-notifications .notification.critical {
+    border-color: #ff0033;
+    border-left-color: #ff0033;
+    box-shadow: 0 0 20px rgba(255, 0, 51, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.8);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+scrollbar {
+    background: transparent;
+    border: none;
+    min-width: 4px;
+}
+
+scrollbar slider {
+    background: #2a2a2a;
+    border-radius: 0;
+    min-height: 40px;
+    min-width: 4px;
+}
+
+scrollbar slider:hover {
+    background: #ff6600;
+}
