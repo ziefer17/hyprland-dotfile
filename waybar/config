@@ -1,0 +1,144 @@
+// ~/.config/waybar/config.jsonc
+// Somebar-inspired waybar config for Hyprland
+// Mimics the classic dwm/somebar layout:
+//   [tags/workspaces] [window title] ... [status: vol | net | cpu | time]
+
+{
+"include": [
+  "$HOME/.config/waybar/ModulesCustom",
+],
+    "layer": "top",
+    "position": "top",
+    "height": 22,
+    "spacing": 0,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "exclusive": true,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+
+    "modules-center": [],
+
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "battery",
+        "clock",
+        "custom/power"
+    ],
+
+    // ── Left ───────────────────────────────────────────────────────────────
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate",
+        "sort-by-number": true,
+        "active-only": false,
+        "show-special": false,
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        }
+    },
+
+    "hyprland/window": {
+        "format": "  {title}",
+        "max-length": 60,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "ff: $1",
+            "(.*) - fish": "$1",
+            "(.*) - nvim": "nvim: $1",
+            "": "~"
+        }
+    },
+
+    // ── Right ──────────────────────────────────────────────────────────────
+    "power-profiles-daemon": {
+        "format": "{icon} ",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+
+
+    "pulseaudio": {
+        "format": "vol {volume}%",
+        "format-muted": "vol mute",
+        "on-click": "pamixer -t",
+        "on-scroll-up": "pamixer -i 2",
+        "on-scroll-down": "pamixer -d 2",
+        "tooltip": true,
+        "tooltip-format": "{desc}\n{volume}%"
+    },
+
+    "network": {
+        "format-wifi": "net {essid}",
+        "format-ethernet": "eth {ifname}",
+        "format-disconnected": "net off",
+        "max-length": 20,
+        "tooltip": true,
+        "tooltip-format": "{ifname} | {ipaddr}/{cidr}\n↑ {bandwidthUpBytes}  ↓ {bandwidthDownBytes}\nStrength: {signaldBm} dBm ({signalStrength}%)"
+    },
+
+    "cpu": {
+        "format": "cpu {usage}%",
+        "interval": 3,
+        "tooltip": true,
+        "tooltip-format": "CPU Usage: {usage}%\nLoad: {load}"
+    },
+
+    "memory": {
+        "format": "mem {used:0.1f}G",
+        "interval": 5,
+        "tooltip": true,
+        "tooltip-format": "Used:  {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G\nAvail: {avail:0.1f}G"
+    },
+
+    "battery": {
+        "format": "bat {capacity}%",
+        "format-charging": "bat {capacity}%+",
+        "format-full": "bat full",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip": true,
+        "tooltip-format": "{timeTo}\nHealth: {health}%\nCycles: {cycles}"
+    },
+
+    "clock": {
+        "format": "{:%a %b %d  %H:%M}",
+        "tooltip": true,
+        "tooltip-format": "<big>{:%A, %B %d %Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "months":     "<span color='#eeeeee'><b>{}</b></span>",
+                "days":       "<span color='#bbbbbb'>{}</span>",
+                "weeks":      "<span color='#005577'><b>W{}</b></span>",
+                "weekdays":   "<span color='#888888'><b>{}</b></span>",
+                "today":      "<span color='#eeeeee' background='#005577'><b>{}</b></span>"
+            }
+        }
+    },
+
+
+    "tray": {
+        "spacing": 8,
+        "icon-size": 14
+    },
+}

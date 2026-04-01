@@ -1,0 +1,137 @@
+/* ~/.config/waybar/style.css
+ * Somebar / dwm-inspired waybar theme for Hyprland
+ *
+ * Color scheme: dark background, white text, blue highlight
+ * matching the classic somebar defaults from config.def.hpp
+ *
+ * somebar defaults:
+ *   normBg  #222222   normFg  #bbbbbb
+ *   selBg   #005577   selFg   #eeeeee
+ *   urgBg   #770000   urgFg   #eeeeee
+ */
+
+/* ── Variables ─────────────────────────────────────────────────────────── */
+* {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow: none;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Root bar ───────────────────────────────────────────────────────────── */
+window#waybar {
+    background-color: #222222;
+    color: #bbbbbb;
+    font-family: "JetBrains Mono", "Hack", "Monospace";
+    font-size: 13px;
+    font-weight: normal;
+}
+
+/* ── Workspaces (the "tags") ────────────────────────────────────────────── */
+#workspaces {
+background-color: #222222;
+padding: 0;
+margin: 0;
+}
+
+#workspaces button {
+background-color: #222222;
+color: #bbbbbb;
+padding: 0 6px;
+min-width: 20px;
+border-radius: 0;
+border: none;
+font-size: 13px;
+font-family: "JetBrains Mono", "Hack", "Monospace";
+}
+
+/* Active/focused workspace — blue highlight like somebar */
+#workspaces button.active,
+#workspaces button.focused {
+background-color: #005577;
+color: #eeeeee;
+font-weight: bold;
+}
+
+/* Occupied but not focused */
+#workspaces button.visible {
+background-color: #333333;
+color: #bbbbbb;
+}
+
+/* Urgent workspace */
+#workspaces button.urgent {
+background-color: #770000;
+color: #eeeeee;
+}
+
+#workspaces button:hover {
+background-color: #334455;
+color: #eeeeee;
+box-shadow: none;
+}
+
+/* ── Window title ───────────────────────────────────────────────────────── */
+#window {
+background-color: #222222;
+color: #bbbbbb;
+padding: 0 10px;
+font-style: italic;
+}
+
+/* ── Separator between modules (the | in somebar) ───────────────────────── */
+/* Each right-side module gets a left separator via padding and a subtle border */
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#battery,
+#clock {
+background-color: #222222;
+color: #bbbbbb;
+padding: 0 8px;
+border-left: 1px solid #333333;
+}
+
+/* ── Individual module tweaks ───────────────────────────────────────────── */
+#clock {
+color: #eeeeee;
+background-color: #005577;
+padding: 0 10px;
+border-left: none;
+font-weight: bold;
+}
+
+#battery.warning {
+color: #e5c07b;
+}
+
+#battery.critical {
+color: #e06c75;
+animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%   { color: #e06c75; }
+    50%  { color: #222222; background-color: #e06c75; }
+    100% { color: #e06c75; }
+}
+
+/* ── Tray ───────────────────────────────────────────────────────────────── */
+#tray {
+background-color: #222222;
+padding: 0 6px;
+border-left: 1px solid #333333;
+}
+
+#tray > .passive {
+-gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+-gtk-icon-effect: highlight;
+background-color: #770000;
+}
