@@ -1,7 +1,1 @@
-# dotfile
-
-## Requirements  
-
-
-## Simple commands
-
+personal dotfile for arch hyprland
