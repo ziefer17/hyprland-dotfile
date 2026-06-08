@@ -1,13 +1,15 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
-  export ZSH=~/.oh-my-zsh
-
+export ZSH=~/.oh-my-zsh
+export PATH="$PATH:$HOME/.dotnet/tools"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
+HISTSIZE=5000
+SAVEHIST=5000
+HISTFILE=~/.zsh_history
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -59,12 +61,11 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-syntax-highlighting
-  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
-
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -93,3 +94,30 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+mvc-make() {
+  mkdir -p Controllers Views/$1
+  cat > Controllers/${1}Controller.cs << EOF
+using Microsoft.AspNetCore.Mvc;
+
+namespace MyApp.Controllers;
+
+public class ${1}Controller : Controller
+{
+    public IActionResult Index()
+    {
+        return View();
+    }
+}
+EOF
+
+  cat > Views/${1}/Index.cshtml << EOF
+<!DOCTYPE html>
+<html>
+<head><title>${1}</title></head>
+<body>
+    <h1>${1}</h1>
+</body>
+</html>
+EOF
+  echo "Created ${1}Controller.cs and Views/${1}/Index.cshtml"
+}

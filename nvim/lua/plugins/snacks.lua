@@ -4,7 +4,7 @@ return {
     picker = {
       sources = {
         projects = {
-          dev = { "~/Personal/projects", "~/Personal/code", "~/Personal/work" }, -- your folders that CONTAIN projects
+          dev = { "~/Personal/projects", "~/Downloads/University/", "~/Personal/work" }, -- your folders that CONTAIN projects
         },
       },
     },
