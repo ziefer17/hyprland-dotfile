@@ -3,20 +3,24 @@ return {
     {
         "mason-org/mason.nvim",
         opts = function(_, opts)
-        opts.ensure_installed = opts.ensure_installed or {}
+        opts.registries = opts.registries or {}
+        vim.list_extend(opts.registries, {
+            "github:Crashdummyy/mason-registry",  -- needed for roslyn
+            "github:mason-org/mason-registry",
+        })
 
-        -- add tools you want
+        opts.ensure_installed = opts.ensure_installed or {}
         vim.list_extend(opts.ensure_installed, {
-            "roslyn",
+            "roslyn",       -- correct package name, NOT roslyn-language-server
             "csharpier",
             "netcoredbg",
             "fantomas",
             "fsautocomplete",
+            "html-lsp",
         })
 
-        -- filter out omnisharp if something else adds it
         opts.ensure_installed = vim.tbl_filter(function(tool)
-        return tool ~= "omnisharp"
+        return tool ~= "omnisharp" and tool ~= "roslyn-language-server"
         end, opts.ensure_installed)
         end,
     },
@@ -33,9 +37,24 @@ return {
     },
 
     {
-        "seblj/roslyn.nvim",
-        ft = "cs",
-        opts = {},
+        "seblyng/roslyn.nvim",
+        ft = { "cs", "razor", "cshtml" },  -- expand filetypes
+        opts = {
+            config = {
+                filewatching = false, -- reduces load significantly on large projects
+            },
+        },
+    },
+
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            servers = {
+                roslyn_ls = { enabled = false },
+                omnisharp = { enabled = false },
+                omnisharp_mono = { enabled = false },
+            },
+        },
     },
 
     {
@@ -44,6 +63,15 @@ return {
         opts.formatters_by_ft = opts.formatters_by_ft or {}
         opts.formatters_by_ft.cs = { "csharpier" }
         opts.formatters_by_ft.fsharp = { "fantomas" }
+        end,
+    },
+
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function(_, opts)
+        vim.list_extend(opts.ensure_installed, {
+            "c_sharp",
+        })
         end,
     },
 }

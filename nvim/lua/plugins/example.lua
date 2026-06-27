@@ -134,6 +134,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "c_sharp",
       },
     },
   },
@@ -148,6 +149,7 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "tsx",
         "typescript",
+        "c_sharp",
       })
     end,
   },
